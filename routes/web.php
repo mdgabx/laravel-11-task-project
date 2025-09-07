@@ -10,7 +10,7 @@ Route::get('/', function () {
 });
 
 Route::get('/tasks', function () {
-    $tasks = Task::latest()->get();
+    $tasks = Task::latest()->paginate();
 
     return view('index', [
         'tasks' => $tasks
@@ -66,6 +66,13 @@ Route::put('/tasks/{task}', function (Task $task, TaskRequest $request) {
         'task' => $task->id
     ])->with('success', 'Task updated succesfully');
 })->name('tasks.update');
+
+Route::delete('/tasks/{task}', function (Task $task) {
+    $task->delete();
+
+    return redirect()->route('tasks.index')
+        ->with('success', 'Successfulyy deleted');
+})->name('tasks.destroy');
 
 
 

@@ -22,4 +22,10 @@
     @empty
         <p>Dont have any</p>
     @endforelse
+
+    @if($tasks->count())
+       <nav>
+        {{ $tasks->links() }}
+       </nav>
+    @endif
 @endsection
