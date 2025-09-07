@@ -11,6 +11,10 @@
         <p>Dont have any</p>
     @endif --}}
 
+    <div>
+        <a href="{{ route('tasks.create') }}">Add Task</a>
+    </div>
+
     @forelse ($tasks as $task)
         <div>
             <a href="{{ route('tasks.show', [

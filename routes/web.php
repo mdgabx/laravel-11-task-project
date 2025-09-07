@@ -74,6 +74,12 @@ Route::delete('/tasks/{task}', function (Task $task) {
         ->with('success', 'Successfulyy deleted');
 })->name('tasks.destroy');
 
+Route::put('/tasks/{task}/toggle-complete', function (Task $task) {
+    $task->toggleCompleted();
+
+    return redirect()->back()->with('success', 'Task updated');
+})->name('tasks.toggle-complete');
+
 
 
 // Route::get('/hello', function () {
